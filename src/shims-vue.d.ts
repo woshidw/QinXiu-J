@@ -3,6 +3,6 @@ declare module '*.vue' {
   export default Vue;
 }
 declare module '*.svg' {
-  const content: string;
+  const content: any;
   export default content;
 }
