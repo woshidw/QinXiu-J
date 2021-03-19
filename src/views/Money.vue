@@ -1,7 +1,7 @@
 <template>
-    <Layout>
-      <p>你好</p>
-    </Layout>
+  <Layout>
+    <p>你好</p>
+  </Layout>
 </template>
 
 <script lang="ts">

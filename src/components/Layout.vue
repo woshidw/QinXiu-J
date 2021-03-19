@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts">
- export default {
-   name: 'Layout'
- }
+export default {
+  name: 'Layout'
+};
 </script>
 <style lang="scss" scoped>
 .nav-wrapper {
