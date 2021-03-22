@@ -30,6 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
 .nav {
   display: flex;
   box-shadow: 0 0 3px rgba(0, 0, 0, .25);
@@ -50,7 +51,7 @@ export default {
     }
   }
   > .item.selected{
-    color:red;
+    color: $color-highlight;
   }
 }
 </style>
