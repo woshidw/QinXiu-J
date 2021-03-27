@@ -2,16 +2,17 @@
   <div>
     <ul class="types">
       <li :class="type === '-' && 'selected'"
-          @click="selectType">支出
+          @click="selectType('-')">支出
       </li>
       <li :class="type === '+' && 'selected'"
-          @click="selectType">收入
+          @click="selectType('+')">收入
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="js">
+
 export default {
   name: 'Types',
   props:['xxx'],
