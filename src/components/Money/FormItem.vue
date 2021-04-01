@@ -24,8 +24,8 @@ export default class FormItem extends Vue {
   @Prop() placeholder?: string;
 
   @Watch('value')
-  onValueChanged(val: string) {
-    this.$emit('update:value', val);
+  onValueChanged(value: string) {
+    this.$emit('update:value', value);
   }
 }
 </script>
