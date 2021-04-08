@@ -3,7 +3,7 @@ const path = require('path')//引入一个path模块
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/QinXiu-J-website/'
+    ? '/QingXiu-J-website/'
     : '/',
   lintOnSave: false,
   //eslint-disable-next-line
