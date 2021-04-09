@@ -2,7 +2,9 @@
   <Layout>
     <Tabs class-prefix="type" :data-source="recordTypeList"
           :value.sync="type"/>
-    <Chart :options="x"/>
+    <div class="chart-wrapper" ref="chartWrapper">
+      <Chart class="chart" :options="x"/>
+    </div>
 
     <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
@@ -45,6 +47,10 @@ export default class Statistics extends Vue {
         tags.map(t => t.name).join('，');
   }
 
+  mounted() {
+    (this.$refs.chartWrapper as HTMLDivElement).scrollLeft = 9999;
+  }
+
   beautify(string: string) {
     const day = dayjs(string);
     const now = dayjs();
@@ -64,18 +70,28 @@ export default class Statistics extends Vue {
 
   get x() {
     return {
+      grid:{
+        left: 0,
+        right: 0,
+      },
       xAxis: {
         type: 'category',
         data: [
           '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
           '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
           '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-        ]
+        ],
+        axisTick: {alignWithLabel: true},
+        axisLine: {lineStyle: {color: '#666'}}
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        show: false
       },
       series: [{
+        symbol: 'circle',
+        symbolSize: 12,
+        itemStyle: {borderWidth: 1, color: '#666'},
         data: [
           820, 932, 901, 934, 1290, 1330, 1320,
           820, 932, 901, 934, 1290, 1330, 1320,
@@ -84,7 +100,12 @@ export default class Statistics extends Vue {
         ],
         type: 'line'
       }],
-      tooltip: {show: true}
+      tooltip: {
+        show: true,
+        triggerOn: 'click',
+        position: 'top',
+        formatter: '{c}'
+      }
     };
   }
 
@@ -182,5 +203,16 @@ export default class Statistics extends Vue {
   margin-right: auto;
   margin-left: 16px;
   color: #999;
+}
+
+.chart {
+  width: 430%;
+
+  &-wrapper {
+    overflow: auto;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+  }
 }
 </style>
