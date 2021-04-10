@@ -69,7 +69,8 @@ export default class Statistics extends Vue {
       return day.format('YYYY年M月D日');
     }
   }
-  get y(){
+
+  get y() {
     const today = new Date();
     const array = [];
     for (let i = 0; i <= 29; i++) {
@@ -83,12 +84,12 @@ export default class Statistics extends Vue {
       });
     }
 
-    array.sort((a, b) =>{
-      if(a.date > b.date){
+    array.sort((a, b) => {
+      if (a.date > b.date) {
         return 1;
-      }else if (a.date === b.date){
+      } else if (a.date === b.date) {
         return 0;
-      }else {
+      } else {
         return -1;
       }
     });
@@ -108,7 +109,12 @@ export default class Statistics extends Vue {
         type: 'category',
         data: keys,
         axisTick: {alignWithLabel: true},
-        axisLine: {lineStyle: {color: '#666'}}
+        axisLine: {lineStyle: {color: '#666'}},
+        axisLabel: {
+          formatter: function (value: string, index: number) {
+            return value.substr(5);
+          }
+        }
       },
       yAxis: {
         type: 'value',
